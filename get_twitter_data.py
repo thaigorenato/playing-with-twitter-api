@@ -1,9 +1,20 @@
 import twitter
+import os
 
-api = twitter.Api(consumer_key='WrmwwQYAzAzPCvUcYfZfrMvlT',
-                  consumer_secret='ZGchLkQrVPwEtaIhsLvxBLOxlT1T7Vq6aVWi9WtIUXFCcpHnEh',
-                  access_token_key='1383129438-E8RnMQcsvG6rI82IQWrQ0HSVc0Zzc3x8DlM8PPN',
-                  access_token_secret='nmzdvaq1BYDJELYmZQ1Mc5orVSnE8t8ojGhjYkbNsrw8Z')
+# Para obter suas chaves de acesso, crie uma conta
+# de desenvolvedor no twitter no seguinte link:
+# https://dev.twitter.com/
+
+
+consumer_key = os.environ['consumer_key']
+consumer_secret = os.environ['consumer_secret']
+access_token_key= os.environ['access_token_key']
+access_token_secret = os.environ['access_token_secret']
+
+api = twitter.Api(consumer_key=consumer_key,
+                  consumer_secret=consumer_secret,
+                  access_token_key=access_token_key,
+                  access_token_secret=access_token_secret)
 
 
 for tw in api.GetStreamFilter(track=['python', 'javascript', 'ruby']):
