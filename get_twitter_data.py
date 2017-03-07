@@ -17,5 +17,5 @@ api = twitter.Api(consumer_key=consumer_key,
                   access_token_secret=access_token_secret)
 
 
-for tw in api.GetStreamFilter(track=['python', 'javascript', 'ruby']):
+for tw in api.GetStreamFilter(track=['python', 'java', 'ruby']):
     print tw

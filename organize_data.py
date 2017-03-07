@@ -56,21 +56,21 @@ def word_in_text(word, text):
 
 # 4º Vamos acrescentar em nosso dataframe mais 
 # algumas colunas que endicam as ocorrências 
-# das palavras python, javascript e ruby
+# das palavras python, java e ruby
 tweets['python'] = tweets['text'].apply(lambda tweet: word_in_text('python', tweet))
-tweets['javascript'] = tweets['text'].apply(lambda tweet: word_in_text('javascript', tweet))
+tweets['java'] = tweets['text'].apply(lambda tweet: word_in_text('java', tweet))
 tweets['ruby'] = tweets['text'].apply(lambda tweet: word_in_text('ruby', tweet))
 
 # 5º vamos plotar a frequência de aparição dessas palavras nos tweets
-prg_langs = ['python', 'javascript', 'ruby']
-tweets_by_prg_lang = [tweets['python'].value_counts()[True], tweets['javascript'].value_counts()[True], tweets['ruby'].value_counts()[True]]
+prg_langs = ['python', 'java', 'ruby']
+tweets_by_prg_lang = [tweets['python'].value_counts()[True], tweets['java'].value_counts()[True], tweets['ruby'].value_counts()[True]]
 x_pos = list(range(len(prg_langs)))
 width = 0.8
 fig, ax = plt.subplots()
 plt.bar(x_pos, tweets_by_prg_lang, width, alpha=1, color='g')
 
 ax.set_ylabel('Numero de tweets', fontsize=15)
-ax.set_title('Ranking: python vs. javascript vs. ruby (Dado bruto)', fontsize=10, fontweight='bold')
+ax.set_title('Ranking: python vs. java vs. ruby (Dado bruto)', fontsize=10, fontweight='bold')
 ax.set_xticks([p + 0.4 * width for p in x_pos])
 ax.set_xticklabels(prg_langs)
 
@@ -87,7 +87,7 @@ tweets['relevant'] = tweets['text'].apply(lambda tweet: word_in_text('programmin
 # Vamos contar quantas vezes esses dados  
 # relevantes parecem para cada linguagem
 tweets_by_prg_lang = [tweets[tweets['relevant'] == True]['python'].value_counts()[True], 
-                      tweets[tweets['relevant'] == True]['javascript'].value_counts()[True], 
+                      tweets[tweets['relevant'] == True]['java'].value_counts()[True], 
                       tweets[tweets['relevant'] == True]['ruby'].value_counts()[True]]
 
 
@@ -97,7 +97,7 @@ width = 0.8
 fig, ax = plt.subplots()
 plt.bar(x_pos, tweets_by_prg_lang, width,alpha=1,color='g')
 ax.set_ylabel('Numero de tweets', fontsize=15)
-ax.set_title('Ranking: python vs. javascript vs. ruby (Dados relevantes)', fontsize=10, fontweight='bold')
+ax.set_title('Ranking: python vs. java vs. ruby (Dados relevantes)', fontsize=10, fontweight='bold')
 ax.set_xticks([p + 0.4 * width for p in x_pos])
 ax.set_xticklabels(prg_langs)
 
